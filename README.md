@@ -1,5 +1,7 @@
 # Cove
 
+**Live: https://krishnanaicker.me/**
+
 Krishna Naicker’s personal portfolio. A quiet ASCII pond, generative artwork, and selected work.
 
 React, TypeScript, Vite, and Framer Motion. No backend or API keys required.
