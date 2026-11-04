@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" fill="none" aria-hidden="true">
+  <!-- Krishna's signature. Geometry is untouched; stroke color is inherited
+       from CSS via currentColor and pathLength enables dash-trace animation. -->
+  <path
+    d="M 493 100 L 238 40 L 478 40 L 133 100 L 373 100 L 403 160 L 118 40"
+    pathLength="1"
+    stroke="currentColor"
+    stroke-width="3"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
