@@ -8,7 +8,7 @@ export default function Home() {
       <p className="home-greeting">{profile.greeting}<span className="quote-cursor" aria-hidden="true" /></p>
       <h1 className="home-heading"><span className="home-salutation" lang="hi-Latn">{profile.salutation}</span><span>{profile.introduction}</span></h1>
       <div className="home-intro">
-        <p>Currently leading <span className="product-mention">
+        <p>Currently building <span className="product-mention">
           <a href={profile.currentWork.href} className="bio-product" target="_blank" rel="noreferrer" aria-describedby="orkus-preview">{profile.currentWork.product}</a>
           <span className="product-preview" role="tooltip" id="orkus-preview"><strong>Orkus</strong><span>Agent-building &amp; orchestration.</span><span className="product-preview-url">agents.allcognix.com <span aria-hidden="true">↗</span></span></span>
         </span> <span className="home-company">{profile.currentWork.company}</span>.</p>
