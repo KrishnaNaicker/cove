@@ -3,8 +3,8 @@ import CareerField from "../components/CareerField";
 import { achievements, experience } from "../data/portfolio";
 
 const NOTES = [
-  "Leading Orkus. Building the workflows, integrations, and tools behind an agent platform.",
-  "Built LLM apps and autonomous agents for multi-step healthcare workflows.",
+  "Sole engineer on Orkus. Rebuilt the platform where people build AI agents and workflows without code.",
+  "Built five retail AI agents end to end, from demand forecasting to checkout-free shopping.",
 ];
 
 export default function Experience() {

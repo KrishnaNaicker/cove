@@ -36,7 +36,7 @@ export interface ProjectLink {
   href: string;
 }
 
-export type DiagramKind = "assetflow" | "triage" | "tracelink" | "careflow" | "healthease";
+export type DiagramKind = "maya" | "aceso" | "assetflow" | "padhai" | "loom";
 
 export interface Project {
   name: string;
@@ -48,54 +48,52 @@ export interface Project {
   links: ProjectLink[];
 }
 
+// The first three are the featured projects from the resume.
 export const projects: Project[] = [
   {
+    name: "Maya",
+    descriptor: "Voice ordering kiosk",
+    date: "Featured · Oct 2026",
+    summary: "A voice-first ordering kiosk, built at AllCognix AI. An LLM turns streaming speech into typed cart actions, a deterministic engine does the pricing, and QR checkout shows live receipts. On-device Whisper: 9.6% word error rate on 18 held-out clips.",
+    diagram: "maya",
+    tech: ["TypeScript", "React", "Node.js", "WebSockets", "Whisper", "OpenVINO"],
+    links: [{ label: "Live demo (offline)", href: "https://maya-demo.duckdns.org" }],
+  },
+  {
+    name: "Aceso",
+    descriptor: "Supervised self-healing for web apps",
+    date: "Featured · Aug 2026 – Present",
+    summary: "Self-healing for web apps, with a human in the loop. A final-year team project I lead. A LangGraph agent writes a scoped fix for a production fault, which ships only after 12 checks and human approval. I built its append-only evidence ledger and the job queue for the repair workers.",
+    diagram: "aceso",
+    tech: ["LangGraph", "PostgreSQL"],
+    links: [],
+  },
+  {
     name: "AssetFlow",
-    descriptor: "Enterprise asset management",
-    date: "Jul 2026",
-    summary: "Shared assets, fewer loose ends. Transfers, bookings, maintenance, and permissions in one place.",
+    descriptor: "Asset & resource management",
+    date: "Featured · Jul 2026",
+    summary: "Asset and resource management, built as a team. The asset module has role-based access, atomic transfers, and bookings that can't overlap, enforced in an Express and Prisma service layer.",
     diagram: "assetflow",
-    tech: ["TypeScript", "React", "Express", "Prisma", "PostgreSQL"],
-    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/Team-Artemis" }],
+    tech: ["TypeScript", "Express", "Prisma", "PostgreSQL"],
+    links: [{ label: "GitHub", href: "https://github.com/Harsh-4210/Team-Artemis-" }],
   },
   {
-    name: "Support Triage Agent",
-    descriptor: "Safety-first RAG pipeline",
-    date: "May 2026",
-    summary: "Checks safety before searching the docs. Answers from sources and hands off when it needs help.",
-    diagram: "triage",
-    tech: ["Python", "LangGraph", "ChromaDB", "sentence-transformers"],
-    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/Support-Triage-Agent" }],
+    name: "Padhai",
+    descriptor: "Exam notes from a syllabus",
+    date: "Nov 2026",
+    summary: "An open-source agent skill that turns a unit's syllabus into an exam-ready PDF of answers. Numericals are computed in code and every page is checked before it ships. Free for every student, and each page says so.",
+    diagram: "padhai",
+    tech: ["Agent Skill", "Python", "HTML/CSS", "KaTeX", "matplotlib"],
+    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/padhai" }],
   },
   {
-    name: "TraceLink",
-    descriptor: "Offline traceability engine",
-    date: "Apr 2026",
-    summary: "Follow a manufacturing batch from material to complaint. Built to work offline.",
-    diagram: "tracelink",
-    tech: ["TypeScript", "Node.js", "Offline-first"],
-    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/TraceLink" }],
-  },
-  {
-    name: "CareFlow & HealBERT",
-    descriptor: "Agentic healthcare & self-healing ML",
-    date: "Nov 2025",
-    summary: "Healthcare agents and a language model with a fallback plan. Two builds exploring more dependable AI.",
-    diagram: "careflow",
-    tech: ["Python", "PyTorch", "LangGraph", "CrewAI", "LoRA"],
-    links: [
-      { label: "GitHub · CareFlow", href: "https://github.com/KrishnaNaicker/healthcare-ai-agents" },
-      { label: "GitHub · HealBERT", href: "https://github.com/KrishnaNaicker/self-healing-dag" },
-    ],
-  },
-  {
-    name: "HealthEase",
-    descriptor: "AI healthcare platform",
-    date: "Apr 2025",
-    summary: "Research summaries, symptom analysis, and wellness history. A healthcare app that keeps things together.",
-    diagram: "healthease",
-    tech: ["Python", "Streamlit", "MongoDB"],
-    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/HealthEase" }],
+    name: "Loom",
+    descriptor: "A tiny coding harness",
+    date: "Nov 2026",
+    summary: "A tiny coding harness. A model works in a throwaway copy of a repo with four tools, and the harness, not the model, decides when it's done: it runs the tests, snapshots progress, and rolls back when a run stalls. Every step, token, and dollar is logged.",
+    diagram: "loom",
+    tech: ["Python", "Anthropic API", "pytest", "uv"],
+    links: [{ label: "GitHub", href: "https://github.com/KrishnaNaicker/loom" }],
   },
 ];
 
@@ -112,9 +110,9 @@ export const experience: Role[] = [
     title: "Full-Stack Engineer Intern",
     org: "AllCognix AI",
     dates: "Jan 2026 – Present",
-    context: "Product Lead — Orkus, an agent-building and orchestration platform",
+    context: "Orkus, an agent-building and orchestration platform",
     contribution:
-      "Leads Orkus end to end — turning product requirements into workflow primitives, backend services, integrations, and tooling across architecture, implementation, debugging, and release.",
+      "Sole engineer on Orkus. Rebuilt the platform where users create AI agents, workflows, templates, and RAG knowledge bases without code, on FastAPI and React.",
   },
   {
     title: "GenAI Full-Stack Engineer Intern",
@@ -122,7 +120,7 @@ export const experience: Role[] = [
     dates: "Nov 2025 – Jan 2026",
     context: "Bengaluru, India · Remote",
     contribution:
-      "Architected full-stack LLM applications and autonomous agents with LangGraph and CrewAI for multi-step healthcare workflows.",
+      "Built five retail AI agents end to end with FastAPI, React, and OpenAI, covering demand forecasting, product recommendations, checkout-free shopping, price negotiation, and post-purchase support.",
   },
 ];
 
@@ -134,8 +132,10 @@ export const education = {
 };
 
 export const achievements = [
+  { result: "Claude for Startups", event: "Accepted with AllCognix AI, Nov 2026" },
+  { result: "85th of 857 teams", event: "Finalist, Odoo Hackathon 2026" },
   { result: "158 / 1,349", event: "HackerRank Orchestrate" },
   { result: "Top 20 teams", event: "MCCIA AI Hackathon 2026" },
-  { result: "3rd of 130+ teams", event: "Pragyantra national hackathon" },
-  { result: "National rank 236", event: "HackRx 6.0, Bajaj Finserv" },
+  { result: "3rd of 130+ teams", event: "Pragyantra hackathon, as team lead" },
+  { result: "National rank 236", event: "HackRx 6.0" },
 ];

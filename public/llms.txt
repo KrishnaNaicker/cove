@@ -1,11 +1,11 @@
 # Krishna Naicker — personal portfolio
 
-Personal portfolio of Krishna Naicker, a full-stack AI engineer based in Pune, India. He builds agent orchestration platforms, retrieval systems, and web applications, and currently leads Orkus at AllCognix AI.
+Personal portfolio of Krishna Naicker, a full-stack AI engineer based in Pune, India. He builds agent orchestration platforms, retrieval systems, and web applications, and is currently the sole engineer on Orkus at AllCognix AI.
 
 ## Pages
 
 - Cove: short personal introduction with links to GitHub, LinkedIn, email, and résumé.
-- Work: five projects — AssetFlow, Support Triage Agent, TraceLink, CareFlow & HealBERT, HealthEase — with overview, technologies, and public GitHub links where they exist.
+- Work: five projects — Maya, Aceso and AssetFlow (featured), then Padhai and Loom — with overview, technologies, and links where they exist.
 - Experience: two internships (AllCognix AI, Omnineura AI Technologies), and a compact achievements list.
 
 ## Facts
