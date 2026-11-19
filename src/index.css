@@ -570,18 +570,20 @@ body {
   .gallery-summary { font-size: 14.3px; max-width: 594px; margin-bottom: 12px; }
   .gallery-tech { font-size: 11px; margin-bottom: 12px; }
   .gallery-links .quiet-link { font-size: 12.1px; }
-  .career-layout { flex: 1; min-height: 0; gap: 70px; margin: 4px 0 24px; }
+  .career-layout { flex: 1; min-height: fit-content; gap: 70px; margin: 4px 0 28px; }
   .career-art { min-height: 0; }
   .career-field { height: 100%; max-height: 390px; }
-  .career-entry { padding: 20px 0; }
-  .career-date { font-size: 11px; }
-  .career-entry h3 { font-size: 20.9px; }
-  .career-title { font-size: 12.1px; margin-bottom: 12px; }
-  .career-note { font-size: 13.2px; max-width: 407px; line-height: 1.8; }
+  .career-entry { padding: 18px 0; }
+  .career-date { font-size: 10.5px; margin-bottom: 10px; }
+  .career-entry h3 { font-size: 18px; margin-bottom: 4px; }
+  .career-title { font-size: 11px; margin-bottom: 10px; }
+  .career-note { font-size: 12px; max-width: 400px; line-height: 1.8; }
   .honours { flex: none; padding-top: 20px; }
   .honours-label { font-size: 11px; margin-bottom: 20px; }
+  .honours ul { grid-template-columns: repeat(3,1fr); gap: 20px 26px; }
+  .honours li { gap: 6px; }
   .honour-result { font-size: 14.3px; }
-  .honour-event { font-size: 11px; max-width: 165px; }
+  .honour-event { font-size: 11px; max-width: none; }
 }
 @media (min-width: 900px) and (max-height: 700px) {
   .work-gallery, .experience-gallery { padding-top: 88px; padding-bottom: 20px; }
