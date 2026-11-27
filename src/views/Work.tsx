@@ -25,9 +25,10 @@ export default function Work() {
     <div className="artwork-stage"><Ribbon index={active} gesture={gesture}/><span className="artwork-index" aria-hidden="true">study / 0{active+1}</span></div>
     <article id="project-panel" role="tabpanel" aria-labelledby={`project-tab-${active}`} className="gallery-info" tabIndex={0} data-testid={`project-stage-${active}`}>
       <div className="project-heading"><h3>{p.name}</h3><span>{p.date}</span></div>
+      {p.recognition&&<p className="project-recognition">{p.recognition}</p>}
       <p className="gallery-summary">{p.summary}</p>
       <p className="gallery-tech">{p.tech.join(' · ')}</p>
-      <div className="gallery-links">{p.links.map(link=><a key={link.href} className="quiet-link" href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true"> ↗</span></a>)}</div>
+      <div className="gallery-links">{p.links.map(link=><a key={link.href} className="quiet-link" href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<span aria-hidden="true"> ↗</span></a>)}</div>
     </article>
   </section>;
 }

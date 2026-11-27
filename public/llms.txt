@@ -13,5 +13,5 @@ Personal portfolio of Krishna Naicker, a full-stack AI engineer based in Pune, I
 - Location: Pune, India.
 - Email: krishnanaicker2005@gmail.com
 - GitHub: https://github.com/KrishnaNaicker
-- LinkedIn: https://www.linkedin.com/in/krishnanaicker29
+- LinkedIn: https://www.linkedin.com/in/krishnanaicker
 - Résumé PDF is served at resume.pdf.

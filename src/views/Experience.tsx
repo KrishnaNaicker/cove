@@ -24,7 +24,7 @@ export default function Experience() {
     </div>
     <section className="honours" aria-label="Achievements">
       <div className="honours-label">A few milestones</div>
-      <ul data-testid="achievements-list">{achievements.map(a=><li key={a.event}><span className="honour-result">{a.result}</span><span className="honour-event">{a.event}</span></li>)}</ul>
+      <ul data-testid="achievements-list">{achievements.map(a=><li key={a.event}>{a.href?<a className="honour-result" href={a.href} target="_blank" rel="noopener noreferrer">{a.result}</a>:<span className="honour-result">{a.result}</span>}<span className="honour-event">{a.event}</span></li>)}</ul>
     </section>
   </section>;
 }

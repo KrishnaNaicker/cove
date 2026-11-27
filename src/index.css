@@ -4,7 +4,7 @@
   --bg: #201f1d;
   --ivory: #ece7db;
   --muted: #a49d8f;
-  --faint: #7d766a;
+  --faint: #928b7e; /* 4.88:1 on --bg (WCAG AA); --muted is 6.12:1 */
   --sage: #9db08c;
   --line: rgba(236, 231, 219, 0.12);
   --spider-red: #8f2f26;
@@ -33,10 +33,22 @@ body {
   color: var(--bg);
 }
 
+/* Focus rings only while navigating with Tab (see main.tsx), never after a click,
+   a tap, or an unrelated key press such as PrtSc. */
+:focus,
 :focus-visible {
+  outline: none;
+}
+
+html.using-keyboard :focus-visible {
   outline: 1px solid var(--sage);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app-shell {
@@ -418,11 +430,13 @@ body {
 .gallery-tab.active .project-number { color: var(--sage); }
 .artwork-stage { position: relative; height: clamp(250px, 41vh, 410px); margin: 8px 0 12px; }
 .ribbon-art { width: 100%; height: 100%; overflow: visible; }
-.artwork-index { position: absolute; bottom: 14px; right: 0; color: var(--faint); opacity: .7; font-size: 9px; letter-spacing: .12em; }
+.artwork-index { position: absolute; bottom: 14px; right: 0; color: var(--faint); font-size: 9px; letter-spacing: .12em; }
 .gallery-info { max-width: 610px; margin: 0 auto; min-height: 164px; }
 .project-heading { display: flex; align-items: baseline; gap: 20px; justify-content: space-between; }
 .project-heading h3 { font-size: 18px; font-weight: 400; letter-spacing: -.035em; margin: 0 0 8px; }
 .project-heading > span { color: var(--faint); font-size: 10px; white-space: nowrap; }
+.project-recognition { margin: -2px 0 11px; font-size: 11px; line-height: 1.7; color: var(--muted); }
+.project-recognition::before { content: ''; display: inline-block; width: 4px; height: 4px; margin-right: 8px; background: var(--sage); border-radius: 50%; vertical-align: middle; }
 .gallery-summary { color: var(--muted); font-size: 13px; line-height: 1.85; max-width: 540px; margin: 0 0 13px; }
 .gallery-tech { color: var(--faint); font-size: 10px; line-height: 1.9; margin: 0 0 14px; }
 .gallery-links { display: flex; gap: 22px; flex-wrap: wrap; }
@@ -454,7 +468,7 @@ body {
 .signature-svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .signature-button .signature-svg { transition: transform .45s cubic-bezier(.22,1,.36,1); }
 .signature-button:hover .signature-svg { transform: rotate(-4deg) translateY(-1px); }
-.signature-button:hover path, .signature-button:focus-visible path { animation: sign-retrace .65s ease both; }
+.signature-button:hover path, .using-keyboard .signature-button:focus-visible path { animation: sign-retrace .65s ease both; }
 @keyframes sign-retrace { from { stroke-dasharray: 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1; stroke-dashoffset: 0; } }
 .signature-intro { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; pointer-events: none; }
 .signature-backdrop { position: absolute; inset: 0; background: var(--bg); }
@@ -474,7 +488,8 @@ body {
 .career-ripple { transform-box: fill-box; transform-origin: center; animation: career-ripple 4s ease-out infinite; }
 @keyframes career-ripple { from { transform: scale(.55); opacity: .7; } to { transform: scale(1.8); opacity: 0; } }
 .career-entries { align-self: center; }
-.career-entry { padding: 28px 0; border-bottom: 1px solid var(--line); outline-offset: 8px; }
+.career-entry { padding: 28px 0; border-bottom: 1px solid var(--line); }
+html.using-keyboard .career-entry:focus-visible { outline-offset: 8px; }
 .career-entry:first-child { padding-top: 14px; }
 .career-entry:last-child { border: 0; }
 .career-date { display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: .02em; color: var(--faint); margin-bottom: 12px; }
@@ -490,6 +505,8 @@ body {
 .honours ul { list-style: none; display: grid; grid-template-columns: repeat(4,1fr); gap: 26px; margin: 0; padding: 0; }
 .honours li { display: flex; flex-direction: column; gap: 9px; }
 .honour-result { font-size: 13px; color: var(--sage); white-space: nowrap; }
+a.honour-result { white-space: normal; text-decoration: underline 1px rgba(157,176,140,.38); text-underline-offset: 4px; transition: color .2s, text-decoration-color .2s; }
+a.honour-result:hover { color: var(--ivory); text-decoration-color: var(--sage); }
 .honour-event { font-size: 10px; line-height: 1.8; color: var(--faint); max-width: 150px; }
 @media (max-width: 700px) {
   .signature-button { width: 68px; height: 40px; }
@@ -502,7 +519,7 @@ body {
   .career-entry { padding: 24px 0; }
   .career-note { max-width: 100%; }
   .career-entry h3 { font-size: 18px; }
-  .honours ul { grid-template-columns: repeat(2,1fr); gap: 24px 20px; }
+  .honours ul { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 20px; }
   .honour-result { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -525,11 +542,11 @@ body {
 .home-company { white-space: nowrap; }
 .product-mention { position: relative; display: inline-block; }
 .bio-product { color: var(--ivory); text-decoration: none; border-bottom: 1px solid rgba(236,231,219,.38); padding-bottom: 2px; transition: color .2s, border-color .2s; }
-.bio-product:hover, .bio-product:focus-visible { color: var(--sage); border-color: var(--sage); }
+.bio-product:hover, .using-keyboard .bio-product:focus-visible { color: var(--sage); border-color: var(--sage); }
 .product-preview { position: absolute; bottom: calc(100% + 13px); left: -14px; width: 245px; padding: 14px 16px; background: #2c2b27; border: 1px solid rgba(236,231,219,.11); border-radius: 6px; display: grid; gap: 4px; font-size: 11px; line-height: 1.7; color: var(--muted); opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; z-index: 35; box-shadow: 0 8px 24px #0002; }
 .product-preview strong { color: var(--ivory); font-size: 12px; font-weight: 400; }
-.product-preview-url { display: flex; justify-content: space-between; padding-top: 9px; margin-top: 5px; border-top: 1px solid var(--line); font-size: 9px; color: var(--faint); }
-.product-mention:hover .product-preview, .product-mention:focus-within .product-preview { opacity: 1; visibility: visible; transform: none; }
+.product-preview-url { display: flex; justify-content: space-between; padding-top: 9px; margin-top: 5px; border-top: 1px solid var(--line); font-size: 9px; color: var(--muted); }
+.product-mention:hover .product-preview, .using-keyboard .product-mention:focus-within .product-preview { opacity: 1; visibility: visible; transform: none; }
 @media (max-width: 700px) {
   .home-block { padding: 40vh 24px 10vh; }
   .home-greeting { font-size: 12px; margin-bottom: 25px; }
@@ -570,8 +587,10 @@ body {
   .gallery-summary { font-size: 14.3px; max-width: 594px; margin-bottom: 12px; }
   .gallery-tech { font-size: 11px; margin-bottom: 12px; }
   .gallery-links .quiet-link { font-size: 12.1px; }
-  .career-layout { flex: 1; min-height: fit-content; gap: 70px; margin: 4px 0 28px; }
-  .career-art { min-height: 0; }
+  .project-recognition { font-size: 12.1px; margin-bottom: 10px; }
+  /* The artwork yields height so the whole chronology and milestones fit one screen. */
+  .career-layout { flex: 1; min-height: 0; grid-template-rows: minmax(0, 1fr); gap: 70px; margin: 4px 0 28px; }
+  .career-art { min-height: 0; grid-template-rows: minmax(0, 1fr); }
   .career-field { height: 100%; max-height: 390px; }
   .career-entry { padding: 18px 0; }
   .career-date { font-size: 10.5px; margin-bottom: 10px; }
@@ -580,7 +599,7 @@ body {
   .career-note { font-size: 12px; max-width: 400px; line-height: 1.8; }
   .honours { flex: none; padding-top: 20px; }
   .honours-label { font-size: 11px; margin-bottom: 20px; }
-  .honours ul { grid-template-columns: repeat(3,1fr); gap: 20px 26px; }
+  .honours ul { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px 26px; }
   .honours li { gap: 6px; }
   .honour-result { font-size: 14.3px; }
   .honour-event { font-size: 11px; max-width: none; }

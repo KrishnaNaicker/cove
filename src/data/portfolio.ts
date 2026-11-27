@@ -25,9 +25,9 @@ export const profile = {
   ],
   links: [
     { label: "GitHub", href: "https://github.com/KrishnaNaicker" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/krishnanaicker29" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/krishnanaicker" },
     { label: "Email", href: "mailto:krishnanaicker2005@gmail.com" },
-    { label: "Resume", href: "./resume.pdf" },
+    { label: "Resume", href: "./resume.pdf?v=2026-11-27" },
   ],
 };
 
@@ -35,6 +35,9 @@ export interface ProjectLink {
   label: string;
   href: string;
 }
+
+export const INTEL_LISTING_URL =
+  "https://builders.intel.com/ecosystem-engagement/solution-hub/edge-ai-catalog/partner-spotlight/maya-ai-powered-conversational-kiosk-399";
 
 export type DiagramKind = "maya" | "aceso" | "assetflow" | "padhai" | "loom";
 
@@ -46,6 +49,8 @@ export interface Project {
   diagram: DiagramKind;
   tech: string[];
   links: ProjectLink[];
+  // A short third-party recognition shown under the project heading.
+  recognition?: string;
 }
 
 // The first three are the featured projects from the resume.
@@ -57,7 +62,8 @@ export const projects: Project[] = [
     summary: "A voice-first ordering kiosk, built at AllCognix AI. An LLM turns streaming speech into typed cart actions, a deterministic engine does the pricing, and QR checkout shows live receipts. On-device Whisper: 9.6% word error rate on 18 held-out clips.",
     diagram: "maya",
     tech: ["TypeScript", "React", "Node.js", "WebSockets", "Whisper", "OpenVINO"],
-    links: [{ label: "Live demo (offline)", href: "https://maya-demo.duckdns.org" }],
+    links: [{ label: "View on Intel Edge AI Catalog", href: INTEL_LISTING_URL }],
+    recognition: "Verified Intel AI Edge application — listed in Intel’s Edge AI Catalog (Nov 2026)",
   },
   {
     name: "Aceso",
@@ -131,7 +137,14 @@ export const education = {
   detail: "Pune, India · CGPA 9.36 (Semesters 1–6)",
 };
 
-export const achievements = [
+export interface Achievement {
+  result: string;
+  event: string;
+  href?: string;
+}
+
+export const achievements: Achievement[] = [
+  { result: "Intel Edge AI Catalog", event: "Maya, a verified Intel AI Edge application, Nov 2026", href: INTEL_LISTING_URL },
   { result: "Claude for Startups", event: "Accepted with AllCognix AI, Nov 2026" },
   { result: "85th of 857 teams", event: "Finalist, Odoo Hackathon 2026" },
   { result: "158 / 1,349", event: "HackerRank Orchestrate" },
